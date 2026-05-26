@@ -24,7 +24,7 @@ export const Route = createFileRoute("/karsilastir")({
 function Karsilastir() {
   const { ids } = Route.useSearch();
   const slugs = (ids ?? "yıldız-city-pro,luna-explorer-x,kestane-travel-mini").split(",").slice(0, 3);
-  const selected = slugs.map((s) => products.find((p) => p.slug === s)).filter(Boolean) as typeof products;
+  const selected = slugs.map((s: string) => products.find((p) => p.slug === s)).filter(Boolean) as typeof products;
 
   return (
     <Container className="py-12 sm:py-16">
