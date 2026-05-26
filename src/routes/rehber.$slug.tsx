@@ -26,16 +26,13 @@ export const Route = createFileRoute("/rehber/$slug")({
       ],
     };
   },
-  loader: ({ params }) => {
-    const article = findArticle(params.slug);
-    if (!article) throw notFound();
-    return { article };
-  },
   component: RehberDetail,
 });
 
 function RehberDetail() {
-  const { article } = Route.useLoaderData();
+  const { slug } = Route.useParams();
+  const article = findArticle(slug);
+  if (!article) throw notFound();
   return (
     <article>
       <Container className="py-12" size="narrow">

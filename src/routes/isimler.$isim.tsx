@@ -16,16 +16,13 @@ export const Route = createFileRoute("/isimler/$isim")({
       ],
     };
   },
-  loader: ({ params }) => {
-    const name = findName(params.isim);
-    if (!name) throw notFound();
-    return { name };
-  },
   component: IsimDetail,
 });
 
 function IsimDetail() {
-  const { name } = Route.useLoaderData();
+  const { isim } = Route.useParams();
+  const name = findName(isim);
+  if (!name) throw notFound();
   const related = babyNames.filter((n) => n.gender === name.gender && n.slug !== name.slug).slice(0, 6);
   return (
     <Container className="py-12 sm:py-16" size="narrow">

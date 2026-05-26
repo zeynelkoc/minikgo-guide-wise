@@ -18,16 +18,14 @@ export const Route = createFileRoute("/hamilelik/$donem")({
       ],
     };
   },
-  loader: ({ params }) => {
-    const period = findPeriod(params.donem);
-    if (!period) throw notFound();
-    return { period };
-  },
   component: DonemDetail,
 });
 
 function DonemDetail() {
-  const { period } = Route.useLoaderData();
+  const { donem } = Route.useParams();
+  const period = findPeriod(donem);
+  if (!period) throw notFound();
+
   return (
     <Container className="py-12 sm:py-16" size="narrow">
       <Breadcrumb
