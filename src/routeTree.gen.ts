@@ -9,38 +9,153 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SihirbazRouteImport } from './routes/sihirbaz'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as UrunlerIndexRouteImport } from './routes/urunler.index'
+import { Route as RehberIndexRouteImport } from './routes/rehber.index'
+import { Route as IsimlerIndexRouteImport } from './routes/isimler.index'
+import { Route as HamilelikIndexRouteImport } from './routes/hamilelik.index'
+import { Route as RehberSlugRouteImport } from './routes/rehber.$slug'
+import { Route as IsimlerIsimRouteImport } from './routes/isimler.$isim'
+import { Route as HamilelikDonemRouteImport } from './routes/hamilelik.$donem'
 
+const SihirbazRoute = SihirbazRouteImport.update({
+  id: '/sihirbaz',
+  path: '/sihirbaz',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UrunlerIndexRoute = UrunlerIndexRouteImport.update({
+  id: '/urunler/',
+  path: '/urunler/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RehberIndexRoute = RehberIndexRouteImport.update({
+  id: '/rehber/',
+  path: '/rehber/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IsimlerIndexRoute = IsimlerIndexRouteImport.update({
+  id: '/isimler/',
+  path: '/isimler/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HamilelikIndexRoute = HamilelikIndexRouteImport.update({
+  id: '/hamilelik/',
+  path: '/hamilelik/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RehberSlugRoute = RehberSlugRouteImport.update({
+  id: '/rehber/$slug',
+  path: '/rehber/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IsimlerIsimRoute = IsimlerIsimRouteImport.update({
+  id: '/isimler/$isim',
+  path: '/isimler/$isim',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HamilelikDonemRoute = HamilelikDonemRouteImport.update({
+  id: '/hamilelik/$donem',
+  path: '/hamilelik/$donem',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/sihirbaz': typeof SihirbazRoute
+  '/hamilelik/$donem': typeof HamilelikDonemRoute
+  '/isimler/$isim': typeof IsimlerIsimRoute
+  '/rehber/$slug': typeof RehberSlugRoute
+  '/hamilelik/': typeof HamilelikIndexRoute
+  '/isimler/': typeof IsimlerIndexRoute
+  '/rehber/': typeof RehberIndexRoute
+  '/urunler/': typeof UrunlerIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/sihirbaz': typeof SihirbazRoute
+  '/hamilelik/$donem': typeof HamilelikDonemRoute
+  '/isimler/$isim': typeof IsimlerIsimRoute
+  '/rehber/$slug': typeof RehberSlugRoute
+  '/hamilelik': typeof HamilelikIndexRoute
+  '/isimler': typeof IsimlerIndexRoute
+  '/rehber': typeof RehberIndexRoute
+  '/urunler': typeof UrunlerIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/sihirbaz': typeof SihirbazRoute
+  '/hamilelik/$donem': typeof HamilelikDonemRoute
+  '/isimler/$isim': typeof IsimlerIsimRoute
+  '/rehber/$slug': typeof RehberSlugRoute
+  '/hamilelik/': typeof HamilelikIndexRoute
+  '/isimler/': typeof IsimlerIndexRoute
+  '/rehber/': typeof RehberIndexRoute
+  '/urunler/': typeof UrunlerIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/sihirbaz'
+    | '/hamilelik/$donem'
+    | '/isimler/$isim'
+    | '/rehber/$slug'
+    | '/hamilelik/'
+    | '/isimler/'
+    | '/rehber/'
+    | '/urunler/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/sihirbaz'
+    | '/hamilelik/$donem'
+    | '/isimler/$isim'
+    | '/rehber/$slug'
+    | '/hamilelik'
+    | '/isimler'
+    | '/rehber'
+    | '/urunler'
+  id:
+    | '__root__'
+    | '/'
+    | '/sihirbaz'
+    | '/hamilelik/$donem'
+    | '/isimler/$isim'
+    | '/rehber/$slug'
+    | '/hamilelik/'
+    | '/isimler/'
+    | '/rehber/'
+    | '/urunler/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SihirbazRoute: typeof SihirbazRoute
+  HamilelikDonemRoute: typeof HamilelikDonemRoute
+  IsimlerIsimRoute: typeof IsimlerIsimRoute
+  RehberSlugRoute: typeof RehberSlugRoute
+  HamilelikIndexRoute: typeof HamilelikIndexRoute
+  IsimlerIndexRoute: typeof IsimlerIndexRoute
+  RehberIndexRoute: typeof RehberIndexRoute
+  UrunlerIndexRoute: typeof UrunlerIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sihirbaz': {
+      id: '/sihirbaz'
+      path: '/sihirbaz'
+      fullPath: '/sihirbaz'
+      preLoaderRoute: typeof SihirbazRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +163,68 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/urunler/': {
+      id: '/urunler/'
+      path: '/urunler'
+      fullPath: '/urunler/'
+      preLoaderRoute: typeof UrunlerIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rehber/': {
+      id: '/rehber/'
+      path: '/rehber'
+      fullPath: '/rehber/'
+      preLoaderRoute: typeof RehberIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/isimler/': {
+      id: '/isimler/'
+      path: '/isimler'
+      fullPath: '/isimler/'
+      preLoaderRoute: typeof IsimlerIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hamilelik/': {
+      id: '/hamilelik/'
+      path: '/hamilelik'
+      fullPath: '/hamilelik/'
+      preLoaderRoute: typeof HamilelikIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rehber/$slug': {
+      id: '/rehber/$slug'
+      path: '/rehber/$slug'
+      fullPath: '/rehber/$slug'
+      preLoaderRoute: typeof RehberSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/isimler/$isim': {
+      id: '/isimler/$isim'
+      path: '/isimler/$isim'
+      fullPath: '/isimler/$isim'
+      preLoaderRoute: typeof IsimlerIsimRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hamilelik/$donem': {
+      id: '/hamilelik/$donem'
+      path: '/hamilelik/$donem'
+      fullPath: '/hamilelik/$donem'
+      preLoaderRoute: typeof HamilelikDonemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SihirbazRoute: SihirbazRoute,
+  HamilelikDonemRoute: HamilelikDonemRoute,
+  IsimlerIsimRoute: IsimlerIsimRoute,
+  RehberSlugRoute: RehberSlugRoute,
+  HamilelikIndexRoute: HamilelikIndexRoute,
+  IsimlerIndexRoute: IsimlerIndexRoute,
+  RehberIndexRoute: RehberIndexRoute,
+  UrunlerIndexRoute: UrunlerIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
