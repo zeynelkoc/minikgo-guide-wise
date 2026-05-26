@@ -124,7 +124,7 @@ export interface Product {
 
 export type ArticleType = "guide" | "checklist" | "ranking" | "info";
 
-export interface ArticleBlock =
+export type ArticleBlock =
   | { kind: "paragraph"; text: string }
   | { kind: "heading"; text: string }
   | { kind: "inlineProduct"; productSlug: Slug; angle: string }
