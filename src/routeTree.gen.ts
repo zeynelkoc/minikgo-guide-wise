@@ -10,6 +10,12 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SihirbazRouteImport } from './routes/sihirbaz'
+import { Route as KosullarRouteImport } from './routes/kosullar'
+import { Route as KarsilastirRouteImport } from './routes/karsilastir'
+import { Route as IletisimRouteImport } from './routes/iletisim'
+import { Route as HesabimRouteImport } from './routes/hesabim'
+import { Route as HakkimizdaRouteImport } from './routes/hakkimizda'
+import { Route as GizlilikRouteImport } from './routes/gizlilik'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as UrunlerIndexRouteImport } from './routes/urunler.index'
 import { Route as RehberIndexRouteImport } from './routes/rehber.index'
@@ -18,10 +24,42 @@ import { Route as HamilelikIndexRouteImport } from './routes/hamilelik.index'
 import { Route as RehberSlugRouteImport } from './routes/rehber.$slug'
 import { Route as IsimlerIsimRouteImport } from './routes/isimler.$isim'
 import { Route as HamilelikDonemRouteImport } from './routes/hamilelik.$donem'
+import { Route as UrunlerKategoriIndexRouteImport } from './routes/urunler.$kategori.index'
+import { Route as UrunlerKategoriSlugRouteImport } from './routes/urunler.$kategori.$slug'
 
 const SihirbazRoute = SihirbazRouteImport.update({
   id: '/sihirbaz',
   path: '/sihirbaz',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KosullarRoute = KosullarRouteImport.update({
+  id: '/kosullar',
+  path: '/kosullar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KarsilastirRoute = KarsilastirRouteImport.update({
+  id: '/karsilastir',
+  path: '/karsilastir',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IletisimRoute = IletisimRouteImport.update({
+  id: '/iletisim',
+  path: '/iletisim',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HesabimRoute = HesabimRouteImport.update({
+  id: '/hesabim',
+  path: '/hesabim',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HakkimizdaRoute = HakkimizdaRouteImport.update({
+  id: '/hakkimizda',
+  path: '/hakkimizda',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GizlilikRoute = GizlilikRouteImport.update({
+  id: '/gizlilik',
+  path: '/gizlilik',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -64,9 +102,25 @@ const HamilelikDonemRoute = HamilelikDonemRouteImport.update({
   path: '/hamilelik/$donem',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UrunlerKategoriIndexRoute = UrunlerKategoriIndexRouteImport.update({
+  id: '/urunler/$kategori/',
+  path: '/urunler/$kategori/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UrunlerKategoriSlugRoute = UrunlerKategoriSlugRouteImport.update({
+  id: '/urunler/$kategori/$slug',
+  path: '/urunler/$kategori/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/gizlilik': typeof GizlilikRoute
+  '/hakkimizda': typeof HakkimizdaRoute
+  '/hesabim': typeof HesabimRoute
+  '/iletisim': typeof IletisimRoute
+  '/karsilastir': typeof KarsilastirRoute
+  '/kosullar': typeof KosullarRoute
   '/sihirbaz': typeof SihirbazRoute
   '/hamilelik/$donem': typeof HamilelikDonemRoute
   '/isimler/$isim': typeof IsimlerIsimRoute
@@ -75,9 +129,17 @@ export interface FileRoutesByFullPath {
   '/isimler/': typeof IsimlerIndexRoute
   '/rehber/': typeof RehberIndexRoute
   '/urunler/': typeof UrunlerIndexRoute
+  '/urunler/$kategori/$slug': typeof UrunlerKategoriSlugRoute
+  '/urunler/$kategori/': typeof UrunlerKategoriIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/gizlilik': typeof GizlilikRoute
+  '/hakkimizda': typeof HakkimizdaRoute
+  '/hesabim': typeof HesabimRoute
+  '/iletisim': typeof IletisimRoute
+  '/karsilastir': typeof KarsilastirRoute
+  '/kosullar': typeof KosullarRoute
   '/sihirbaz': typeof SihirbazRoute
   '/hamilelik/$donem': typeof HamilelikDonemRoute
   '/isimler/$isim': typeof IsimlerIsimRoute
@@ -86,10 +148,18 @@ export interface FileRoutesByTo {
   '/isimler': typeof IsimlerIndexRoute
   '/rehber': typeof RehberIndexRoute
   '/urunler': typeof UrunlerIndexRoute
+  '/urunler/$kategori/$slug': typeof UrunlerKategoriSlugRoute
+  '/urunler/$kategori': typeof UrunlerKategoriIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/gizlilik': typeof GizlilikRoute
+  '/hakkimizda': typeof HakkimizdaRoute
+  '/hesabim': typeof HesabimRoute
+  '/iletisim': typeof IletisimRoute
+  '/karsilastir': typeof KarsilastirRoute
+  '/kosullar': typeof KosullarRoute
   '/sihirbaz': typeof SihirbazRoute
   '/hamilelik/$donem': typeof HamilelikDonemRoute
   '/isimler/$isim': typeof IsimlerIsimRoute
@@ -98,11 +168,19 @@ export interface FileRoutesById {
   '/isimler/': typeof IsimlerIndexRoute
   '/rehber/': typeof RehberIndexRoute
   '/urunler/': typeof UrunlerIndexRoute
+  '/urunler/$kategori/$slug': typeof UrunlerKategoriSlugRoute
+  '/urunler/$kategori/': typeof UrunlerKategoriIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/gizlilik'
+    | '/hakkimizda'
+    | '/hesabim'
+    | '/iletisim'
+    | '/karsilastir'
+    | '/kosullar'
     | '/sihirbaz'
     | '/hamilelik/$donem'
     | '/isimler/$isim'
@@ -111,9 +189,17 @@ export interface FileRouteTypes {
     | '/isimler/'
     | '/rehber/'
     | '/urunler/'
+    | '/urunler/$kategori/$slug'
+    | '/urunler/$kategori/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/gizlilik'
+    | '/hakkimizda'
+    | '/hesabim'
+    | '/iletisim'
+    | '/karsilastir'
+    | '/kosullar'
     | '/sihirbaz'
     | '/hamilelik/$donem'
     | '/isimler/$isim'
@@ -122,9 +208,17 @@ export interface FileRouteTypes {
     | '/isimler'
     | '/rehber'
     | '/urunler'
+    | '/urunler/$kategori/$slug'
+    | '/urunler/$kategori'
   id:
     | '__root__'
     | '/'
+    | '/gizlilik'
+    | '/hakkimizda'
+    | '/hesabim'
+    | '/iletisim'
+    | '/karsilastir'
+    | '/kosullar'
     | '/sihirbaz'
     | '/hamilelik/$donem'
     | '/isimler/$isim'
@@ -133,10 +227,18 @@ export interface FileRouteTypes {
     | '/isimler/'
     | '/rehber/'
     | '/urunler/'
+    | '/urunler/$kategori/$slug'
+    | '/urunler/$kategori/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  GizlilikRoute: typeof GizlilikRoute
+  HakkimizdaRoute: typeof HakkimizdaRoute
+  HesabimRoute: typeof HesabimRoute
+  IletisimRoute: typeof IletisimRoute
+  KarsilastirRoute: typeof KarsilastirRoute
+  KosullarRoute: typeof KosullarRoute
   SihirbazRoute: typeof SihirbazRoute
   HamilelikDonemRoute: typeof HamilelikDonemRoute
   IsimlerIsimRoute: typeof IsimlerIsimRoute
@@ -145,6 +247,8 @@ export interface RootRouteChildren {
   IsimlerIndexRoute: typeof IsimlerIndexRoute
   RehberIndexRoute: typeof RehberIndexRoute
   UrunlerIndexRoute: typeof UrunlerIndexRoute
+  UrunlerKategoriSlugRoute: typeof UrunlerKategoriSlugRoute
+  UrunlerKategoriIndexRoute: typeof UrunlerKategoriIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -154,6 +258,48 @@ declare module '@tanstack/react-router' {
       path: '/sihirbaz'
       fullPath: '/sihirbaz'
       preLoaderRoute: typeof SihirbazRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kosullar': {
+      id: '/kosullar'
+      path: '/kosullar'
+      fullPath: '/kosullar'
+      preLoaderRoute: typeof KosullarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/karsilastir': {
+      id: '/karsilastir'
+      path: '/karsilastir'
+      fullPath: '/karsilastir'
+      preLoaderRoute: typeof KarsilastirRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/iletisim': {
+      id: '/iletisim'
+      path: '/iletisim'
+      fullPath: '/iletisim'
+      preLoaderRoute: typeof IletisimRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hesabim': {
+      id: '/hesabim'
+      path: '/hesabim'
+      fullPath: '/hesabim'
+      preLoaderRoute: typeof HesabimRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hakkimizda': {
+      id: '/hakkimizda'
+      path: '/hakkimizda'
+      fullPath: '/hakkimizda'
+      preLoaderRoute: typeof HakkimizdaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gizlilik': {
+      id: '/gizlilik'
+      path: '/gizlilik'
+      fullPath: '/gizlilik'
+      preLoaderRoute: typeof GizlilikRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -212,11 +358,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HamilelikDonemRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/urunler/$kategori/': {
+      id: '/urunler/$kategori/'
+      path: '/urunler/$kategori'
+      fullPath: '/urunler/$kategori/'
+      preLoaderRoute: typeof UrunlerKategoriIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/urunler/$kategori/$slug': {
+      id: '/urunler/$kategori/$slug'
+      path: '/urunler/$kategori/$slug'
+      fullPath: '/urunler/$kategori/$slug'
+      preLoaderRoute: typeof UrunlerKategoriSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  GizlilikRoute: GizlilikRoute,
+  HakkimizdaRoute: HakkimizdaRoute,
+  HesabimRoute: HesabimRoute,
+  IletisimRoute: IletisimRoute,
+  KarsilastirRoute: KarsilastirRoute,
+  KosullarRoute: KosullarRoute,
   SihirbazRoute: SihirbazRoute,
   HamilelikDonemRoute: HamilelikDonemRoute,
   IsimlerIsimRoute: IsimlerIsimRoute,
@@ -225,6 +391,8 @@ const rootRouteChildren: RootRouteChildren = {
   IsimlerIndexRoute: IsimlerIndexRoute,
   RehberIndexRoute: RehberIndexRoute,
   UrunlerIndexRoute: UrunlerIndexRoute,
+  UrunlerKategoriSlugRoute: UrunlerKategoriSlugRoute,
+  UrunlerKategoriIndexRoute: UrunlerKategoriIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
